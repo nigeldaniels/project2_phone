@@ -28,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
     public String stoken = null;
     public Context maincontext;
     public byte[] buffer = new byte[40];
-   // Settings msettings;
+    Settings msettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onStart(){
         super.onStart();
         maincontext = getApplicationContext();
-       // SharedPreferences settings = getSharedPreferences(perfs,MODE_PRIVATE);
+        SharedPreferences settings = getSharedPreferences(perfs,MODE_PRIVATE);
     }
 
     public void buttonclick(View view) {  // TTHIS IS WHATS HAPPENING WHEN U CLICK THE BUTTON
@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         if (networkInfo != null && networkInfo.isConnected()) {
             s_email =  email.getText().toString();
             s_password = password.getText().toString();
-            if ( s_email == null || s_password == null){
+            if ( s_email == null || s_password == null){ // this checks to make sure email and password are filled out
                 Toast.makeText(getApplicationContext(), "Please Provide a user name and password", Toast.LENGTH_LONG);
             }
 
@@ -70,8 +70,7 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(getApplicationContext(), "The network is fucked up ",Toast.LENGTH_SHORT).show();
         }
 
-    }
-
+   }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

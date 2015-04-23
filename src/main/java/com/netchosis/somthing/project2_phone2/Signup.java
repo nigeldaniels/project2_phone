@@ -45,7 +45,6 @@ public class Signup extends Activity {
         mcontext = getApplicationContext();
         ident = (EditText) findViewById(R.id.ident);
         password  = (EditText) findViewById(R.id.password);
-
     }
 
     public void buttonclick(View view) throws JSONException {

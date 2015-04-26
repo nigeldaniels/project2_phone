@@ -27,11 +27,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
-
 /**
  * Created by nigel on 4/22/15.
  */
+
 public class Getusers extends ListActivity {
     private static final Getusers Instance = new Getusers();
 
@@ -330,4 +329,4 @@ public class Getusers extends ListActivity {
 }
 
 
-}
+

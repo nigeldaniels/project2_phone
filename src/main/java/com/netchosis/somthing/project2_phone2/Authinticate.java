@@ -1,5 +1,6 @@
 package com.netchosis.somthing.project2_phone2;
 
+import com.netchosis.somthing.project2_phone2.Settings;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -19,7 +20,6 @@ import org.json.JSONObject;
 import android.content.Intent;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 import android.content.Context;

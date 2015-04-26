@@ -1,7 +1,9 @@
 package com.netchosis.somthing.project2_phone2;
 
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -13,6 +15,7 @@ import android.net.NetworkInfo;
 import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.view.*;
+
 
 public class MainActivity extends ActionBarActivity {
     public final static String EXTRA_TOKEN = "com.example.project2.TOKEN";
@@ -62,7 +65,6 @@ public class MainActivity extends ActionBarActivity {
                 Authinticater.setM_email(s_email);
                 Authinticater.setM_password(s_password);
                 Authinticater.execute(stringUrl);
-
             }
         }
 

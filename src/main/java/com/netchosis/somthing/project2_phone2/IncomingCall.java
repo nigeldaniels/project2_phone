@@ -1,36 +1,31 @@
 package com.netchosis.somthing.project2_phone2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.AsyncPlayer;
-import android.media.audiofx.BassBoost.Settings;
 import android.net.sip.SipException;
 import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
-import android.net.sip.SipAudioCall;
 
-/**
- * Created by nigel on 4/22/15.
- */
 public class IncomingCall extends Activity {
-    private TextView caller;
-    private String calle;
+	
+	private TextView caller;
+	private String calle;
     public Intent intent = getIntent();
-    public AsyncPlayer player = new AsyncPlayer("ring");
+	public AsyncPlayer player = new AsyncPlayer("ring");
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_incoming_call1);
-        Intent intent = getIntent();
-        calle = intent.getStringExtra(IncomingCallReceiver.EXTRA_INFO);
-        caller = (TextView) findViewById(R.id.caller);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_incoming_call1);
+		Intent intent = getIntent();
+		calle = intent.getStringExtra(IncomingCallReceiver.EXTRA_INFO);
+		caller = (TextView) findViewById(R.id.caller);
         caller.setText(calle);
         ring(player);
-    }
+	}
 
     public void ring(AsyncPlayer player){
         player.play(this.getBaseContext(), android.provider.Settings.System.DEFAULT_RINGTONE_URI, true, 2);
@@ -39,7 +34,7 @@ public class IncomingCall extends Activity {
     public void stopring(AsyncPlayer player){
         player.stop();
     }
-    public void Answerbutton(View view){
+	public void Answerbutton(View view){
         stopring(player);
         try{
             IncomingCallReceiver.incomingCall.answerCall(0);
@@ -61,21 +56,23 @@ public class IncomingCall extends Activity {
     }
 
 
-    public void Hangup(View view) throws SipException {
-        if (IncomingCallReceiver.incomingCall.isInCall()){
+   public void Hangup(View view) throws SipException {
+       if (IncomingCallReceiver.incomingCall.isInCall()){
             IncomingCallReceiver.incomingCall.endCall();
-        }
+       }
 
-        else{
-            Log.d("yeah ", "yeah");
-        }
-        this.finish();
-    }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.incoming_call, menu);
-        return true;
-    }
+       else{
+           Log.d("yeah ", "yeah");
+       }
+       this.finish();
+   }
 
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.incoming_call, menu);
+		return true;
+	}
 }
+
+

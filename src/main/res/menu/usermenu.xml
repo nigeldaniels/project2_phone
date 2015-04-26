@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/profile"
+        android:icon="@drawable/ic_launcher"
+        android:title="My Profile"/>
+    <item android:id="@+id/logout"
+        android:icon="@drawable/abc_ic_commit_search_api_mtrl_alpha"
+        android:title="Logout"/>
+    <item android:id="@+id/Avalible_for_calls"
+        android:icon="@drawable/abc_btn_check_material"
+        android:title="Avalible for Calls"/>
+</menu>

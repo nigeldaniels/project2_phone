@@ -1,46 +1,75 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    tools:context=".MainActivity" >
 
-    <EditText
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/Email"
-        android:layout_marginTop="121dp"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="164dp" >
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="52dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:text="dude@dude.com">
+    </EditText>
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="121317n" />
+
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Password"
+        android:layout_alignRight="@+id/Email"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_marginTop="34dp"
+        android:onClick="buttonclick"
+        android:text="Login" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Credentials"
+        android:id="@+id/checkBox"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:layout_below="@+id/Login"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/Password"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/Email"
-        android:layout_alignLeft="@+id/Email"
-        android:layout_alignStart="@+id/Email" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="login"
+        android:text="Signup"
         android:id="@+id/button"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/Password"
-        android:layout_alignStart="@+id/Password" />
+        android:layout_below="@+id/checkBox"
+        android:layout_alignLeft="@+id/Login"
+        android:layout_marginTop="39dp"
+        android:layout_alignRight="@+id/Login"
+        android:onClick="signup" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="signup"
-        android:id="@+id/button2"
-        android:layout_alignTop="@+id/button"
-        android:layout_alignRight="@+id/Password"
-        android:layout_alignEnd="@+id/Password" />
 </RelativeLayout>

@@ -127,7 +127,7 @@ public class sipwork extends Service implements Runnable {
     public void sipint(SipProfile sipprofile) throws SipException{
 
         Intent intent = new Intent();
-        intent.setAction("example.project2.INCOMING_CALL");
+        intent.setAction("com.netchosis.somthing.project2_phone2.INCOMING_CALL");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, intent, Intent.FILL_IN_DATA);
         sipman.open(sipprofile, pendingIntent, null);
         sipman.register(sipprofile,10,null);
@@ -173,7 +173,7 @@ public class sipwork extends Service implements Runnable {
             Looper.prepare();
             Log.d("THREAD","thread started");
             //setup_incoming();
-            sipcreds = Getsipcreds("http://sip.netchosis.com/sipusers/");
+            sipcreds = Getsipcreds("http://10.0.255.3/sipusers/");
             Log.d("sipcreds",sipcreds.toString());
             //storecreds(sipcreds);
             sipprofile = buildsip(sipcreds);

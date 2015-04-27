@@ -51,7 +51,7 @@ public class Getusers extends ListActivity {
 
     public user currentuser = new user();
 
-    String url = "http://sip.netchosis.com/users/";
+    String url = "http://10.0.255.3/users/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +65,10 @@ public class Getusers extends ListActivity {
         String Message2 = intent.getStringExtra(Signup.EXTRA_TOKEN); //Message 2 will be null unless this activity is started by a new signup
 
         if ( message == null){
-
             message = Message2;
-
             editor =  store(settings,message);// stores token in shared preferances file called perfs
         }
+
         else {
             editor =  store(settings,message);
         }
@@ -89,7 +88,7 @@ public class Getusers extends ListActivity {
         whoami.setPost();
         whoami.setAuthstring(message);
         whoami.sendData(nameValuePairs);
-        whoami.execute("http://sip.netchosis.com/whoami/");
+        whoami.execute("http://10.0.255.3/whoami/");
     }
 
     final Handler httpgethandler = new Handler(){
@@ -104,8 +103,8 @@ public class Getusers extends ListActivity {
                 Log.d("You are", user);
                 setIdent(user);
                 buildmenu();
-                getimages images = new getimages();
-                images.run(dataarray);
+                //getimages images = new getimages();
+                //images.run(dataarray);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -175,7 +174,6 @@ public class Getusers extends ListActivity {
                 User.setImgurl(jsonObject.getString("Image"));
                 User.setEmail(jsonObject.getString("username"));
                 User.setId(jsonObject.getString("id"));
-                User.setLanguage(jsonObject.getString("language"));
                 User.setTimezone(jsonObject.getString("timezone"));
                 User.setPhone(jsonObject.getString("phonenumber"));
                 User.setProfession(jsonObject.getString("profession"));
@@ -302,7 +300,7 @@ public class Getusers extends ListActivity {
         setavalible.setPost();
         setavalible.setAuthstring(message);
         setavalible.sendData(nameValuePairs);
-        setavalible.execute("http://sip.netchosis.com/set_status/");
+        setavalible.execute("http://10.0.255.3/set_status/");
     }
 
     public boolean isitme(){

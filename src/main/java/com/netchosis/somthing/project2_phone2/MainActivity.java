@@ -49,7 +49,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void buttonclick(View view) {  // TTHIS IS WHATS HAPPENING WHEN U CLICK THE BUTTON
-        String stringUrl = "http://sip.netchosis.com/api-token/";
+        String stringUrl = "http://10.0.255.3/api-token/";
 
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();

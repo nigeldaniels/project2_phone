@@ -95,7 +95,7 @@ public class Authinticate extends AsyncTask<String, Void, String> {
     }
 
     private String connect(String url) throws IOException { //connect is where the work happends
-        url = "http://sip.netchosis.com/api-token/";
+        url = "http://10.0.255.3/api-token/";
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet httpget = new HttpGet(url);
         HttpPost httppost = new HttpPost (url);

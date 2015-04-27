@@ -8,8 +8,8 @@ import android.util.Log;
  * Created by nigel on 4/22/15.
  */
 public class user implements Parcelable {
-   // public static finalocal Parcelable.Creator CREATOR = new UserCreator();
-    // private String EMPTY_FIELD = "empty_field";
+    public static finalocal Parcelable.Creator CREATOR = new UserCreator();
+    private String EMPTY_FIELD = "empty_field";
     public String username;
     public String firstname;
     public String lastname;

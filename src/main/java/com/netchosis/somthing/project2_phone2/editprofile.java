@@ -141,7 +141,7 @@ public class editprofile extends Activity  {
         userupdate.setPost();
         userupdate.setAuthstring(currentuser.getAuth());
         userupdate.sendData(nameValuePairs);
-        userupdate.execute("http://sip.netchosis.com/update_user/");
+        userupdate.execute("http://10.0.255.3/update_user/");
     }
  /*
   protected void intrests(View view){

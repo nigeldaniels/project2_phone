@@ -34,9 +34,9 @@ import android.widget.Toast;
 public class Getusers extends ListActivity {
     private static final Getusers Instance = new Getusers();
 
-    public final static String EXTRA_USER = "com.example.project2.USER";
-    public final static String EXTRA_MSG ="com.example.project.MSG";
-    public final static String CURRENT_USER="com.example.project2.CURRENTUSER";
+    public final static String EXTRA_USER = "com.netchosis.somthing.project2_phone2.USER";
+    public final static String EXTRA_MSG ="com.netchosis.somthing.project2_phone2.MSG";
+    public final static String CURRENT_USER="com.netchosis.somthing.project2_phone2.CURRENTUSER";
     public String perfs ="perfs";
     public ListView listview;
     private  ArrayList<Object> dataarray;
@@ -131,11 +131,6 @@ public class Getusers extends ListActivity {
         Log.d("IDENT:",this.ident);
     }
 
-    public void setCurrentUser(String ident){
-
-
-
-    }
 
     public void HandleSIP (sipwork sipWork, int state){
         switch (state) {
@@ -187,7 +182,6 @@ public class Getusers extends ListActivity {
                 if (User.getId().equals(this.ident)){
                     setCurrentuser(User);
                     User.setAuth(message);
-
                     Log.d("Current USER:",User.getUsername());
                 }
 
@@ -273,7 +267,7 @@ public class Getusers extends ListActivity {
     }
 
     public void editprofile(user Currentuser){ // Notice that we set the current user
-        //  Log.d("opening edit profile activity:",currentuser.getAuth());
+        Log.d("edit profile activity:","other");
         Intent editprofileintent = new Intent(this, editprofile.class);
         editprofileintent.putExtra(CURRENT_USER, Currentuser);
         editprofileintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -284,7 +278,7 @@ public class Getusers extends ListActivity {
         SharedPreferences settings = getSharedPreferences(perfs,MODE_PRIVATE);
         String tokencheck = settings.getString("Token", "empty");
         if (tokencheck.length() < 5 || tokencheck == "empty"){ // this is pure fucking shit
-            Log.d("HUSTON WE HAVE A PRBOLEM",tokencheck);
+            Log.d("WE HAVE A PRBOLEM",tokencheck);
         }
         else {
             editor.clear(); /// that was easy !

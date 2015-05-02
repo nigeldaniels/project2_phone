@@ -45,16 +45,15 @@ public class editprofile extends Activity  {
         super.onCreate(savedInstanceState);
         Intent  intent = getIntent();
         Bundle cu = intent.getExtras();
+        Log.d("Edit Profile","were on the edit profile screen!");
+
         try{
             currentuser = cu.getParcelable(Getusers.CURRENT_USER);
             setCurrentuser(currentuser); // Really not sure why this needs to happen
             Log.d("EDITPROFILE CREATED", currentuser.getUsername());
-
             setContentView(R.layout.fragment_editprofile);
-
             populate_profile();
         }
-
         catch (NullPointerException e)
         {
             Log.d("Edit profile"," current user came back null we cant edit the users profile");

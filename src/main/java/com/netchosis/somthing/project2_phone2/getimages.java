@@ -17,19 +17,20 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public  class getimages extends Thread {
-	private static final getimages Instance = new getimages();
+    //private static final getimages Instance = new getimages();
 	
 	public String url;
 	public String token;
 	public String id;
+    public ArrayList userobjects;
 	public static LruCache<String, Bitmap> photocache;
 	
-	public getimages() {
-
+	public getimages(ArrayList userobjects) {
+       this.userobjects = userobjects;
 
 	}
-		
-	public void creatememcache(){
+
+    public void creatememcache(){
 		 final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
 		 final int cacheSize = maxMemory / 8;
 		 
@@ -43,15 +44,15 @@ public  class getimages extends Thread {
 		
 	}
 	
-	public static getimages getInstance(){
-		return Instance;
-	}
+	//public static getimages getInstance(){
+	//	return Instance;
+	//}
 			
-	public void run(ArrayList userobjects){
+	public void run(){
 		this.creatememcache();
 		
-		for(int i =0; i < userobjects.size(); i++){
-			user User =	(user) userobjects.get(i);
+		for(int i =0; i < this.userobjects.size(); i++){
+			user User =	(user) this.userobjects.get(i);
 			id =  User.getId();
 			url = User.getImgurl();
 			

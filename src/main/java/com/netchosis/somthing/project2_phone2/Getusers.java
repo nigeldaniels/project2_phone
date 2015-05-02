@@ -103,8 +103,8 @@ public class Getusers extends ListActivity {
                 Log.d("You are", user);
                 setIdent(user);
                 buildmenu();
-                //getimages images = new getimages();
-                //images.run(dataarray);
+                getimages images = new getimages(dataarray);
+                images.start();
             } catch (JSONException e) {
                 e.printStackTrace();
             }

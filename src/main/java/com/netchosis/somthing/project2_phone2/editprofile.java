@@ -84,7 +84,7 @@ public class editprofile extends Activity  {
         }
 
         try {
-            phone_box.setText(currentuser.getFirstname());
+            phone_box.setText(currentuser.getPhone());
         } catch (NullPointerException e) {
             phone_box.setHint("Phone: eg 510-555-5882");
         }
@@ -101,6 +101,16 @@ public class editprofile extends Activity  {
             email_box.setHint("email address");
         }
 
+        Log.d("currentuser",currentuser.getGender());
+        if (currentuser.getGender() == "Male") {
+
+            gender_box.setSelection(0);
+        }
+
+        else {
+            gender_box.setSelection(1);
+        }
+
     }
     public void Save(View view){ // happends when save button is pressed
         firstname_box = (EditText) findViewById(R.id.fnamebox1);
@@ -110,7 +120,7 @@ public class editprofile extends Activity  {
         gender_box = (Spinner) findViewById(R.id.Gender);
 
         currentuser.setGender(gender_box.getSelectedItem().toString());
-        Log.d("gender check",currentuser.getGender());
+        Log.d("gendercheck",currentuser.getGender());
         currentuser.setFirstname(firstname_box.getText().toString());
         currentuser.setLastname(lastname_box.getText().toString());
         currentuser.setPhone(phone_box.getText().toString());

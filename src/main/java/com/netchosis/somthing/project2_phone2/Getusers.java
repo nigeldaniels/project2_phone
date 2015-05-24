@@ -66,11 +66,11 @@ public class Getusers extends ListActivity {
 
         if ( message == null){
             message = Message2;
-            editor =  store(settings,message);// stores token in shared preferances file called perfs
+            editor = store(settings,message);// stores token in shared preferances file called perfs
         }
 
         else {
-            editor =  store(settings,message);
+            editor = store(settings,message);
         }
 
         whoami();

@@ -118,9 +118,7 @@ public class editprofile extends Activity  {
 
 
         currentuser.setEmail(email_box.getText().toString());
-      //  Log.d("CURRENTFUCK",currentuser.getAuth());
-     //  this.currentuser.setBio(bio_box.getText().toString());
-        update_user(currentuser);
+         update_user(currentuser);
     }
 
     // Need to figure out what to do about profession and intrests

@@ -173,16 +173,16 @@ public class editprofile extends Activity  {
         userupdate.sendData(nameValuePairs);
         userupdate.execute("http://10.0.255.3/update_user/");
     }
- /*
-  protected void intrests(View view){
-        Intent edit_intrestintent = new Intent(this, Intrestactivity.class);
+
+    protected void intrests(View view){
+        Intent edit_intrestintent = new Intent(this, Intrests.class);
         edit_intrestintent.putExtra(C_USER,currentuser);
         edit_intrestintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(edit_intrestintent);
     }
 /*
     protected void Schedule(View view){
-  //      Intent edit_schedule = new Intent(this,);
+        Intent edit_schedule = new Intent(this,);
         edit_schedule.putExtra(C_USER,currentuser);
         edit_schedule.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(edit_schedule);

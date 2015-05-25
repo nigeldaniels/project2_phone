@@ -281,7 +281,7 @@ public class Getusers extends ListActivity {
             Log.d("WE HAVE A PRBOLEM",tokencheck);
         }
         else {
-            editor.clear(); /// that was easy !
+            editor.clear();
             editor.commit();
             System.exit(0);
         }

@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Avalible to take calls"
-        android:id="@+id/checkBox"
+        android:id="@+id/accept_inbound"
         android:checked="false"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />

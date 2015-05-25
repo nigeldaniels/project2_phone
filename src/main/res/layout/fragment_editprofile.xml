@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Accept Inbound Calls"
-            android:id="@+id/checkBox"
+            android:id="@+id/accept_inbound"
             android:checked="false"
             android:layout_above="@+id/button2"
             android:layout_alignParentRight="true" />

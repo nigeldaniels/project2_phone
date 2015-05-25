@@ -30,7 +30,7 @@ public class editprofile extends Activity  {
     private EditText profession_box;
     private EditText bio_box;
     private Spinner gender_box;
-    private CheckBox accept_calls;
+    private CheckBox inbound_call;
     private static user currentuser;
 
     final Handler httphandler = new Handler(){
@@ -69,6 +69,8 @@ public class editprofile extends Activity  {
         bio_box = (EditText) findViewById(R.id.bio1);
         email_box = (EditText) findViewById(R.id.email_box);
         gender_box = (Spinner) findViewById(R.id.Gender);
+        inbound_call = (CheckBox) findViewById(R.id.accept_inbound);
+
 
         try {
             firstname_box.setText(currentuser.getFirstname());
@@ -111,6 +113,17 @@ public class editprofile extends Activity  {
             gender_box.setSelection(1);
         }
 
+        Log.d("currentstatus",currentuser.getStatus());
+        if(currentuser.getStatus().contains("callme")){
+            Log.d("currentstatus3",currentuser.getStatus());
+            inbound_call.setChecked(true);
+        }
+
+        else {
+            inbound_call.setChecked(false);
+        }
+
+
     }
     public void Save(View view){ // happends when save button is pressed
         firstname_box = (EditText) findViewById(R.id.fnamebox1);
@@ -118,6 +131,14 @@ public class editprofile extends Activity  {
         phone_box = (EditText) findViewById(R.id.phonebox);
         bio_box = (EditText) findViewById(R.id.bio1);
         gender_box = (Spinner) findViewById(R.id.Gender);
+        inbound_call = (CheckBox)findViewById(R.id.accept_inbound);
+
+        if (inbound_call.isChecked()){
+            currentuser.setStatus("callme");
+        }
+        else {
+            currentuser.setStatus("donotcall");
+        }
 
         currentuser.setGender(gender_box.getSelectedItem().toString());
         Log.d("gendercheck",currentuser.getGender());
@@ -143,6 +164,7 @@ public class editprofile extends Activity  {
         nameValuePairs.add(new BasicNameValuePair("aboutyou",User.getBio()));
         nameValuePairs.add(new BasicNameValuePair("email",User.getEmail()));
         nameValuePairs.add(new BasicNameValuePair("timezone","pacific"));
+        nameValuePairs.add(new BasicNameValuePair("status",User.getStatus()));
 
         httpio userupdate = new httpio(httphandler);
 

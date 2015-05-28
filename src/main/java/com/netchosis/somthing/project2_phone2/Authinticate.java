@@ -19,9 +19,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.content.Intent;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 import android.content.Context;
 
 /**
@@ -72,9 +74,16 @@ public class Authinticate extends AsyncTask<String, Void, String> {
         return "quick and cool";
     }
 
-    protected void onPostExecute(String result) {        //this starts the Getusers activity
+    protected void StoreToken(){
+
+    }
+
+
+    protected void onPostExecute(String result) {        //this starts the Getuseres activity
         try {
             if (validatetoken(token)) {
+                valuestore.setToken(mcontext,token);
+
                 Intent intent = new Intent(mcontext, Getusers.class);
                 intent.putExtra(EXTRA_TOKEN, token);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

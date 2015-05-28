@@ -73,7 +73,9 @@ public class Getusers extends ListActivity {
             editor = store(settings,message);
         }
 
+
         whoami(); // when the response to whoami comes back we call buildmenu in handleMessage
+
 
         Intent sintent = new Intent(this,sipwork.class); //intent for the sip background service
         Log.d("Getusers:", message);

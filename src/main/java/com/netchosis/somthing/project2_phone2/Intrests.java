@@ -20,14 +20,14 @@ public class Intrests extends ListActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         Bundle cu = intent.getExtras();
-        Log.d("INTRESTS", "where on the intrest screen");
+        Log.d("INTRESTS", "we are on the intrest screen");
 
-        try{
+        try {
             currentuser = cu.getParcelable(Getusers.CURRENT_USER);
             Log.d("EDITPROFILE CREATED", currentuser.getUsername());
             buildmenu();
-
         }
+
         catch (NullPointerException e)
         {
             Log.d("INTRESTS:"," current user came back null we cant edit the users profile");
@@ -36,6 +36,8 @@ public class Intrests extends ListActivity {
 
     public void buildmenu(){
         netdata getgoing = new netdata();
+        getgoing.setToken(message);
+        getgoing.execute(url);
 
 
     }

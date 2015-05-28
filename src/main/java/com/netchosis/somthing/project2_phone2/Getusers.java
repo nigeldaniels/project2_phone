@@ -73,7 +73,7 @@ public class Getusers extends ListActivity {
             editor = store(settings,message);
         }
 
-        whoami();
+        whoami(); // when the response to whoami comes back we call buildmenu in handleMessage
 
         Intent sintent = new Intent(this,sipwork.class); //intent for the sip background service
         Log.d("Getusers:", message);
@@ -81,7 +81,7 @@ public class Getusers extends ListActivity {
         startService(sintent); // this starts the sip background service.
     }
 
-    public void whoami(){
+    public void whoami() {
         List<NameValuePair> nameValuePairs = new  ArrayList<NameValuePair>(2);
         //nameValuePairs.add(new BasicNameValuePair("item1","yes"));
         httpio whoami = new httpio(httpgethandler);

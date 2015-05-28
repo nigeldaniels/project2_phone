@@ -180,7 +180,7 @@ public class editprofile extends Activity  {
         edit_intrestintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(edit_intrestintent);
     }
-/*
+
     protected void Schedule(View view){
         Intent edit_schedule = new Intent(this,);
         edit_schedule.putExtra(C_USER,currentuser);

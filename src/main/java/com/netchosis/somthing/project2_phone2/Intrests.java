@@ -11,15 +11,15 @@ import android.widget.ListView;
  */
 public class Intrests extends ListActivity {
 
-
     public ListView listView;
     private static user currentuser;
-
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         Bundle cu = intent.getExtras();
+
         Log.d("INTRESTS", "we are on the intrest screen");
 
         try {
@@ -35,10 +35,11 @@ public class Intrests extends ListActivity {
     }
 
     public void buildmenu(){
+        String url = "http://10.0.255.3/listusers";
+        token = valuestore.getToken(getApplicationContext());
         netdata getgoing = new netdata();
-        getgoing.setToken(message);
+        getgoing.setToken(token);
         getgoing.execute(url);
-
 
     }
 

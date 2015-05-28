@@ -181,13 +181,6 @@ public class editprofile extends Activity  {
         startActivity(edit_intrestintent);
     }
 
-    protected void Schedule(View view){
-        Intent edit_schedule = new Intent(this,);
-        edit_schedule.putExtra(C_USER,currentuser);
-        edit_schedule.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(edit_schedule);
-    }
-*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

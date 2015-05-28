@@ -73,8 +73,6 @@ public class Getusers extends ListActivity {
             editor = store(settings,message);
         }
 
-
-
         whoami();
 
         Intent sintent = new Intent(this,sipwork.class); //intent for the sip background service

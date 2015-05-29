@@ -48,19 +48,19 @@ public class outboundcall extends Activity {
 
     public void startcall() throws SipException{
        try{
-            String Uri = sipwork.sipprofile.getUriString();
+            String Uri = Sipwork.sipprofile.getUriString();
             String to_uri = UserProfile.getClickeduser().sipuri;
-            mycall = sipwork.sipman.makeAudioCall(Uri, to_uri, listener, 30);
+            mycall = Sipwork.sipman.makeAudioCall(Uri, to_uri, listener, 30);
         } catch (NullPointerException e) {
             Log.d("ERR",e.toString());
         }
 
         try{
 
-            sipwork.sipman.createSipSession(sipwork.sipprofile, slistner);
+            Sipwork.sipman.createSipSession(Sipwork.sipprofile, slistner);
         } catch (NullPointerException e) {
            Log.d("slistner",slistner.toString());
-           Log.d("sipprofile:",sipwork.sipprofile.toString());
+           Log.d("sipprofile:", Sipwork.sipprofile.toString());
 
             e.printStackTrace();
         }

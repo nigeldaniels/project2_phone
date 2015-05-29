@@ -52,7 +52,7 @@ public class UserProfile extends Activity {
 		location.setText(clickeduser.getLocation());
 		//gender.setText(clickeduser.getGender());
 		status.setText(clickeduser.getStatus());
-	//	pic.setImageBitmap(getimages.getInstance().getimage(clickeduser.getId()));
+	//	pic.setImageBitmap(Getimages.getInstance().getimage(clickeduser.getId()));
 	}
 
     public void calling(){ //TODO make a calling activity

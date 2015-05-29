@@ -30,7 +30,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class httpio extends AsyncTask<String,Void,String>  {
+public class Httpio extends AsyncTask<String,Void,String>  {
     public String authstring = "no";
     public String json;
     public Handler httphandler;
@@ -56,7 +56,7 @@ public class httpio extends AsyncTask<String,Void,String>  {
         return this.authstring;
     }
 
-    public httpio(Handler httphandler){
+    public Httpio(Handler httphandler){
         this.httphandler = httphandler;
     }
 
@@ -115,7 +115,7 @@ public class httpio extends AsyncTask<String,Void,String>  {
             if(entity != null){
                 InputStream instream = entity.getContent();
                 String result = convertStreamToString(instream);
-                Log.d("httpio", result );
+                Log.d("Httpio", result );
                 json = result;
                 instream.close();
                 return json;
@@ -135,7 +135,7 @@ public class httpio extends AsyncTask<String,Void,String>  {
 
         if (this.getAuthstring().length() > 2){ // still dont like magic numbers
             httpPost.addHeader("Authorization",authstring);
-            Log.d("httpio authstring",authstring);
+            Log.d("Httpio authstring",authstring);
         }
 
         try{

@@ -16,8 +16,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public  class getimages extends Thread {
-    //private static final getimages Instance = new getimages();
+public  class Getimages extends Thread {
+    //private static final Getimages Instance = new Getimages();
 	
 	public String url;
 	public String token;
@@ -25,7 +25,7 @@ public  class getimages extends Thread {
     public ArrayList userobjects;
 	public static LruCache<String, Bitmap> photocache;
 	
-	public getimages(ArrayList userobjects) {
+	public Getimages(ArrayList userobjects) {
        this.userobjects = userobjects;
 
 	}
@@ -44,7 +44,7 @@ public  class getimages extends Thread {
 		
 	}
 	
-	//public static getimages getInstance(){
+	//public static Getimages getInstance(){
 	//	return Instance;
 	//}
 			

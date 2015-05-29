@@ -82,7 +82,7 @@ public class Authinticate extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {        //this starts the Getuseres activity
         try {
             if (validatetoken(token)) {
-                valuestore.setToken(mcontext,token);
+                Valuestore.setToken(mcontext,token);
 
                 Intent intent = new Intent(mcontext, Getusers.class);
                 intent.putExtra(EXTRA_TOKEN, token);
@@ -96,11 +96,7 @@ public class Authinticate extends AsyncTask<String, Void, String> {
     }
 
     private boolean validatetoken(String token){
-        if (token.isEmpty()){ return false;}
-        else{
-            return true;
-        }
-
+        return !token.isEmpty();
     }
 
     private String connect(String url) throws IOException { //connect is where the work happends
@@ -116,7 +112,7 @@ public class Authinticate extends AsyncTask<String, Void, String> {
             nameValuePairs.add(new BasicNameValuePair("password", M_password));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-            Log.d("Authinticate Username and password name value", nameValuePairs.toString());
+            Log.d("Auth usr and pass value", nameValuePairs.toString());
 
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();

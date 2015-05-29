@@ -3,7 +3,6 @@ package com.netchosis.somthing.project2_phone2;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,11 +10,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONStringer;
@@ -58,8 +55,8 @@ public class Signup extends Activity {
         nameValuePairs.add(new BasicNameValuePair("password",s_password));
         nameValuePairs.add(new BasicNameValuePair("timezone",timezone));
 
-        httpio httpsend = new httpio(httphandler);
-        httpsend.setPost(); // this tells httpio we are posting
+        Httpio httpsend = new Httpio(httphandler);
+        httpsend.setPost(); // this tells Httpio we are posting
         httpsend.sendData(nameValuePairs);
         httpsend.execute(url);
     }

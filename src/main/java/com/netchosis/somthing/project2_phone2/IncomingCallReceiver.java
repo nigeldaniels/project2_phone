@@ -1,11 +1,9 @@
 package com.netchosis.somthing.project2_phone2;
 
 import android.content.BroadcastReceiver;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.sip.SipAudioCall;
-import android.net.sip.SipException;
 import android.net.sip.SipProfile;
 import android.util.Log;
 
@@ -34,7 +32,7 @@ public class IncomingCallReceiver extends BroadcastReceiver {
 
             };
 
-            incomingCall = sipwork.sipman.takeAudioCall(intent,listener);
+            incomingCall = Sipwork.sipman.takeAudioCall(intent,listener);
 
         }
 

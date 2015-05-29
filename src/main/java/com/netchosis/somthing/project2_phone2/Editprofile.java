@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +19,7 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class editprofile extends Activity  {
+public class Editprofile extends Activity  {
     public final static String C_USER = "com.example.project2.CUSER";
     private EditText firstname_box;
     private EditText lastname_box;
@@ -60,16 +59,16 @@ public class editprofile extends Activity  {
         }
     }
 
-    public void setCurrentuser(user currentuser) {this.currentuser = currentuser;}
+    public void setCurrentuser(user currentuser) {Editprofile.currentuser = currentuser;}
 
     protected void populate_profile() {
-        firstname_box = (EditText) findViewById(R.id.fnamebox1);
-        lastname_box = (EditText) findViewById(R.id.lnamebox);
-        phone_box = (EditText) findViewById(R.id.phonebox);
-        bio_box = (EditText) findViewById(R.id.bio1);
-        email_box = (EditText) findViewById(R.id.email_box);
-        gender_box = (Spinner) findViewById(R.id.Gender);
-        inbound_call = (CheckBox) findViewById(R.id.accept_inbound);
+        this.firstname_box = (EditText) findViewById(R.id.fnamebox1);
+        this.lastname_box = (EditText) findViewById(R.id.lnamebox);
+        this.phone_box = (EditText) findViewById(R.id.phonebox);
+        this.bio_box = (EditText) findViewById(R.id.bio1);
+        this.email_box = (EditText) findViewById(R.id.email_box);
+        this.gender_box = (Spinner) findViewById(R.id.Gender);
+        this.inbound_call = (CheckBox) findViewById(R.id.accept_inbound);
 
 
         try {
@@ -104,7 +103,7 @@ public class editprofile extends Activity  {
         }
 
         Log.d("currentuser",currentuser.getGender());
-        if (currentuser.getGender() == "Male") {
+        if (currentuser.getGender().compareTo("Male") == 0) {
 
             gender_box.setSelection(0);
         }
@@ -166,7 +165,7 @@ public class editprofile extends Activity  {
         nameValuePairs.add(new BasicNameValuePair("timezone","pacific"));
         nameValuePairs.add(new BasicNameValuePair("status",User.getStatus()));
 
-        httpio userupdate = new httpio(httphandler);
+        Httpio userupdate = new Httpio(httphandler);
 
         userupdate.setPost();
         userupdate.setAuthstring(currentuser.getAuth());

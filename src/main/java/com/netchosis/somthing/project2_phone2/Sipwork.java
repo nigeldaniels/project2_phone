@@ -27,7 +27,7 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
 
-public class sipwork extends Service implements Runnable {
+public class Sipwork extends Service implements Runnable {
 
     public String message;
     public IncomingCallReceiver callReceiver;

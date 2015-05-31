@@ -5,6 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by nigel on 5/25/15.
@@ -24,8 +30,10 @@ public class Intrests extends ListActivity {
 
         try {
             currentuser = cu.getParcelable(Getusers.CURRENT_USER);
-            Log.d("EDITPROFILE CREATED", currentuser.getUsername());
+            Log.d("INTRESTS CREATED", currentuser.getUsername());
             buildmenu();
+
+
         }
 
         catch (NullPointerException e)
@@ -34,15 +42,28 @@ public class Intrests extends ListActivity {
         }
     }
 
-    public void buildmenu(){
+    public void buildmenu() {
         String url = "http://10.0.255.3/listusers";
-        token = valuestore.getToken(getApplicationContext());
-        netdata getgoing = new netdata();
-        getgoing.setToken(token);
-        getgoing.execute(url);
+        token = Valuestore.getToken(getApplicationContext());
+        netdata intrests = new netdata();
+        intrests.setToken(token);
+        intrests.execute(url);
+        try {
+            JSONArray json = intrests.get();
+            listView = getListView();
+            dataarray = parsedata(json);
+            Toast.makeText(getApplicationContext(), json.toString(), Toast.LENGTH_SHORT).show();
 
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
     }
 
+    public ArrayList<String>
 
 
 }

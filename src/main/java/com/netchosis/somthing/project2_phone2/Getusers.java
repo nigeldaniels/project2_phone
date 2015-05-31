@@ -115,7 +115,7 @@ public class Getusers extends ListActivity {
         }
     };
 
-    final Handler httphandler = new Handler(); // this does nothing its only here because Httpio expects a handler
+    final Handler httphandler = new Handler(); // this es nothing its only here because Httpio expects a handler
 
     public SharedPreferences.Editor store (SharedPreferences settings, String Token) {
         SharedPreferences.Editor editor = settings.edit();

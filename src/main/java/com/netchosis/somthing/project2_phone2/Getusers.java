@@ -15,7 +15,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -60,12 +59,12 @@ public class Getusers extends ListActivity {
         SharedPreferences settings = getSharedPreferences(perfs,MODE_PRIVATE);
 
         Intent intent = getIntent();
-        message = intent.getStringExtra(Authinticate.EXTRA_TOKEN); // message will be null if activity is started by a new signup
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        this.message = intent.getStringExtra(Authinticate.EXTRA_TOKEN); // message will be null if activity is started by a new signup
+        Toast.makeText(getApplicationContext(), this.message, Toast.LENGTH_SHORT).show();
         String Message2 = intent.getStringExtra(Signup.EXTRA_TOKEN); //Message 2 will be null unless this activity is started by a new signup
 
-        if ( message == null){
-            message = Message2;
+        if ( this.message == null){
+            this.message = Message2;
             editor = store(settings,message);// stores token in shared preferances file called perfs
         }
 
@@ -75,7 +74,7 @@ public class Getusers extends ListActivity {
 
         whoami(); // when the response to whoami comes back we call buildmenu in handleMessage
 
-        Intent sintent = new Intent(this,sipwork.class); //intent for the sip background service
+        Intent sintent = new Intent(this,Sipwork.class); //intent for the sip background service
         Log.d("Getusers:", message);
         sintent.putExtra(EXTRA_MSG, message);
         startService(sintent); // this starts the sip background service.
@@ -84,7 +83,7 @@ public class Getusers extends ListActivity {
     public void whoami() {
         List<NameValuePair> nameValuePairs = new  ArrayList<NameValuePair>(2);
         //nameValuePairs.add(new BasicNameValuePair("item1","yes"));
-        httpio whoami = new httpio(httpgethandler);
+        Httpio whoami = new Httpio(httpgethandler);
         whoami.setPost();
         whoami.setAuthstring(message);
         whoami.sendData(nameValuePairs);
@@ -103,7 +102,7 @@ public class Getusers extends ListActivity {
                 Log.d("You are", user);
                 setIdent(user);
                 buildmenu();
-                getimages images = new getimages(dataarray);
+                Getimages images = new Getimages(dataarray);
                 images.start();
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -116,7 +115,7 @@ public class Getusers extends ListActivity {
         }
     };
 
-    final Handler httphandler = new Handler(); // this does nothing its only here because httpio expects a handler
+    final Handler httphandler = new Handler(); // this does nothing its only here because Httpio expects a handler
 
     public SharedPreferences.Editor store (SharedPreferences settings, String Token) {
         SharedPreferences.Editor editor = settings.edit();
@@ -132,19 +131,19 @@ public class Getusers extends ListActivity {
     }
 
 
-    public void HandleSIP (sipwork sipWork, int state){
+    public void HandleSIP (Sipwork sipWork, int state){
         switch (state) {
-            case sipwork.SIP_STATE_REGISTERD:
+            case Sipwork.SIP_STATE_REGISTERD:
                 Message RegisterdMessage = mHandler.obtainMessage(state,sipWork);
                 RegisterdMessage.sendToTarget();
                 break;
 
-            case sipwork.SIP_STATE_REGISTERING:
+            case Sipwork.SIP_STATE_REGISTERING:
                 Message RegisteringMessage = mHandler.obtainMessage(state,sipWork);
                 RegisteringMessage.sendToTarget();
                 break;
 
-            case sipwork.SIP_STATE_REGFAILED:
+            case Sipwork.SIP_STATE_REGFAILED:
                 Message FailedMessage = mHandler.obtainMessage(state,sipWork);
                 FailedMessage.sendToTarget();
                 break;
@@ -268,7 +267,7 @@ public class Getusers extends ListActivity {
 
     public void editprofile(user Currentuser){ // Notice that we set the current user
         Log.d("edit profile activity:","other");
-        Intent editprofileintent = new Intent(this, editprofile.class);
+        Intent editprofileintent = new Intent(this, Editprofile.class);
         editprofileintent.putExtra(CURRENT_USER, Currentuser);
         editprofileintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(editprofileintent);
@@ -290,7 +289,7 @@ public class Getusers extends ListActivity {
     public void avalible(){ // marks this user as avalible to recive incomeing calls
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
         nameValuePairs.add(new BasicNameValuePair("item1","yes"));
-        httpio setavalible = new httpio(httphandler);
+        Httpio setavalible = new Httpio(httphandler);
         setavalible.setPost();
         setavalible.setAuthstring(message);
         setavalible.sendData(nameValuePairs);

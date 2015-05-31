@@ -1,7 +1,6 @@
 package com.netchosis.somthing.project2_phone2;
 
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -17,7 +16,7 @@ import android.content.SharedPreferences;
 import android.view.*;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_TOKEN = "com.example.project2.TOKEN";
     private static final String DEBUG_TAG = "HTTP";
     private EditText email;
@@ -37,9 +36,10 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        email = (EditText) findViewById(R.id.Email);
-        password = (EditText) findViewById(R.id.Password);
         maincontext = getApplicationContext();
+
+        this.email = (EditText) findViewById(R.id.Email);
+        this.password = (EditText) findViewById(R.id.Password);
     }
 
     protected void onStart(){
@@ -54,17 +54,16 @@ public class MainActivity extends ActionBarActivity {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            s_email =  email.getText().toString();
-            s_password = password.getText().toString();
-            if ( s_email == null || s_password == null){ // this checks to make sure email and password are filled out
-                Toast.makeText(getApplicationContext(), "Please Provide a user name and password", Toast.LENGTH_LONG);
-            }
-
-            else {
+            this.s_email =  email.getText().toString();
+            this.s_password = password.getText().toString();
+            if ( this.s_email != null && !this.s_email.isEmpty() && this.s_password != null && !this.s_password.isEmpty()){ // this checks to make sure email and password are filled out
                 Authinticate Authinticater = new Authinticate(maincontext);
                 Authinticater.setM_email(s_email);
                 Authinticater.setM_password(s_password);
                 Authinticater.execute(stringUrl);
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "Please Provide a user name and password", Toast.LENGTH_LONG);
             }
         }
 

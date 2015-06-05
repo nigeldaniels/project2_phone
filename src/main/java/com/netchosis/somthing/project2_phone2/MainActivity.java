@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonclick(View view) {  // TTHIS IS WHATS HAPPENING WHEN U CLICK THE BUTTON
-        String stringUrl = "http://10.0.255.3/api-token/";
+        String stringUrl = Urls.API_TOKEN_URL;
 
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();

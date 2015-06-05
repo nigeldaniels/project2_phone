@@ -100,7 +100,7 @@ public class Authinticate extends AsyncTask<String, Void, String> {
     }
 
     private String connect(String url) throws IOException { //connect is where the work happends
-        url = "http://10.0.255.3/api-token/";
+        url = Urls.API_TOKEN_URL;
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet httpget = new HttpGet(url);
         HttpPost httppost = new HttpPost (url);

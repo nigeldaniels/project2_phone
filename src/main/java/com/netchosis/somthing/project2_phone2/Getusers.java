@@ -50,7 +50,7 @@ public class Getusers extends ListActivity {
 
     public user currentuser = new user();
 
-    String url = "http://10.0.255.3/users/";
+    String url = Urls.USERS_URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class Getusers extends ListActivity {
         whoami.setPost();
         whoami.setAuthstring(message);
         whoami.sendData(nameValuePairs);
-        whoami.execute("http://10.0.255.3/whoami/");
+        whoami.execute(Urls.WHOAMI_URL);
     }
 
     final Handler httpgethandler = new Handler(){
@@ -295,7 +295,7 @@ public class Getusers extends ListActivity {
         setavalible.setPost();
         setavalible.setAuthstring(message);
         setavalible.sendData(nameValuePairs);
-        setavalible.execute("http://10.0.255.3/set_status/");
+        setavalible.execute(Urls.SET_STATUS_URL);
     }
 
     public boolean isitme(){

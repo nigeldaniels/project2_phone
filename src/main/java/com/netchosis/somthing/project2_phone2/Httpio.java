@@ -143,7 +143,7 @@ public class Httpio extends AsyncTask<String,Void,String>  {
             httpPost.setEntity(new UrlEncodedFormEntity(this.data));
             HttpResponse response = httpclient.execute(httpPost);
             HttpEntity entity = response.getEntity();
-
+http://
             if(entity != null){
                 InputStream instream = entity.getContent();
                 String result = convertStreamToString(instream);

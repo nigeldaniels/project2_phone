@@ -170,7 +170,7 @@ public class Editprofile extends Activity  {
         userupdate.setPost();
         userupdate.setAuthstring(currentuser.getAuth());
         userupdate.sendData(nameValuePairs);
-        userupdate.execute("http://10.0.255.3/update_user/");
+        userupdate.execute(Urls.UPDATE_USER_URL);
     }
  /*
   protected void intrests(View view){

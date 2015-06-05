@@ -27,7 +27,7 @@ public class Signup extends Activity {
     public final static String EXTRA_TOKEN = "com.example.project2.TOKEN2";
     public EditText ident;
     public EditText password;
-    public String url = "http://sip.netchosis.com/api-signup/";
+    public String url = Urls.SIGNUP_URL;
     public Message msg;
     private String timezone = "pacific";
     private String s_ident;

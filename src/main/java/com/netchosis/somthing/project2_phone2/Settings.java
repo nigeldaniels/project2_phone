@@ -20,8 +20,8 @@ import java.io.InputStreamReader;
  * Created by nigel on 4/22/15.
  */
 public class Settings extends Application {
-    public String SIP_URL = "http://sip.netchosis.com/api";
-    public String USERS_URL ="http://sip.netchosis.com/users";
+    public String SIP_URL = Urls.SIP_URL;
+    public String USERS_URL = Urls.SIP_USERS_URL;
     public String PERF_NAME = "test";
     public String PERF_LOGIN = "login";
     public String FAIL = "fail";

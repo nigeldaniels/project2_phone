@@ -24,7 +24,7 @@ public class user implements Parcelable {
     public String status;
     public String sipuri;
     public String imgurl;
-    public String urlprefix = "http://sip.netchosis.com/images/";
+    public String urlprefix = Urls.IMAGE_URL;
     public String phone;
     public String email;
     public String auth;

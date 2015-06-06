@@ -1,7 +1,5 @@
 package com.netchosis.somthing.project2_phone2;
 
-import android.provider.CalendarContract;
-
 /**
  * Created by nigel on 6/4/15.
  */
@@ -19,5 +17,6 @@ public class Urls {
     public final static String SIGNUP_URL = domain + "/api-signup/";
     public final static String IMAGE_URL= domain + "/images/";
     public final static String SIP_CREDS_URL = domain + "/sipusers/";
-
+    public final static String SIP_DOMAIN = "104.236.143.204";
+    public final static String SIP_PROXY = "104.236.143.204";
 }

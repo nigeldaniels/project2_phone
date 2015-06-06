@@ -31,8 +31,8 @@ public class Sipwork extends Service implements Runnable {
 
     public String message;
     public IncomingCallReceiver callReceiver;
-    private String SIP_DOMAIN = "sip.netchosis.com";
-    private String SIP_PROXY = "sip.netchosis.com";
+    private String SIP_DOMAIN = Urls.SIP_DOMAIN;
+    private String SIP_PROXY =  Urls.SIP_PROXY;
     public static final int SIP_STATE_REGISTERING = 10;
     public static final int SIP_STATE_REGFAILED  = 11;
     public static final int SIP_STATE_REGISTERD = 99;

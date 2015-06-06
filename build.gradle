@@ -1,5 +1,15 @@
 apply plugin: 'com.android.application'
 
+buildscript {
+    repositories {
+        mavenCentral() // or jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"

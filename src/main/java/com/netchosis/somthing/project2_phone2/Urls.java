@@ -19,4 +19,5 @@ public class Urls {
     public final static String SIP_CREDS_URL = domain + "/sipusers/";
     public final static String SIP_DOMAIN = "104.236.143.204";
     public final static String SIP_PROXY = "104.236.143.204";
+    public final static String SIP_URI_ENDING = "@104.236.143.204";
 }

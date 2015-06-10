@@ -54,7 +54,7 @@ public class user implements Parcelable {
             sipuri = username +"-"+"nousername.com";
 
         }
-        sipuri = sipuri+"@sip.netchosis.com";
+        sipuri = sipuri+Urls.SIP_URI_ENDING;
     }
     public String getImgurl() {
         return imgurl;

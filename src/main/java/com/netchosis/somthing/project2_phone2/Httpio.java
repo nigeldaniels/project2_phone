@@ -18,16 +18,11 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Httpio extends AsyncTask<String,Void,String>  {
@@ -143,7 +138,7 @@ public class Httpio extends AsyncTask<String,Void,String>  {
             httpPost.setEntity(new UrlEncodedFormEntity(this.data));
             HttpResponse response = httpclient.execute(httpPost);
             HttpEntity entity = response.getEntity();
-http://
+
             if(entity != null){
                 InputStream instream = entity.getContent();
                 String result = convertStreamToString(instream);

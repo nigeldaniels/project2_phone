@@ -1,39 +1,98 @@
 package com.netchosis.somthing.project2_phone2;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONStringer;
 
-public class signup extends ActionBarActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by nigel on 4/22/15.
+ */
+public class Signup extends Activity {
+    public final static String EXTRA_TOKEN = "com.example.project2.TOKEN2";
+    public EditText ident;
+    public EditText password;
+    public String url = Urls.SIGNUP_URL;
+    public Message msg;
+    private String timezone = "pacific";
+    private String s_ident;
+    private String s_password;
+    private JSONStringer json = new JSONStringer();
+    private Context mcontext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        mcontext = getApplicationContext();
+        ident = (EditText) findViewById(R.id.ident);
+        password  = (EditText) findViewById(R.id.password);
     }
 
+    public void buttonclick(View view) throws JSONException {
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_signup, menu);
-        return true;
+        s_ident = ident.getText().toString();
+        s_password = password.getText().toString();
+
+        List<NameValuePair>nameValuePairs = new ArrayList<NameValuePair>(2);
+
+        nameValuePairs.add(new BasicNameValuePair("username",s_ident));
+        nameValuePairs.add(new BasicNameValuePair("password",s_password));
+        nameValuePairs.add(new BasicNameValuePair("timezone",timezone));
+
+        Httpio httpsend = new Httpio(httphandler);
+        httpsend.setPost(); // this tells Httpio we are posting
+        httpsend.sendData(nameValuePairs);
+        httpsend.execute(url);
+    }
+
+    final Handler httphandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            Log.d("error",msg.toString());
+            String Data = (String) msg.obj;
+
+            try {
+                JSONObject json = new JSONObject(Data);
+                String token = json.get("item1").toString();
+                Log.d("Signup Token:", token);
+                getUsers(token);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    public void getUsers(String token){
+        Intent intent = new Intent(mcontext, Getusers.class);
+        intent.putExtra(EXTRA_TOKEN, token);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mcontext.startActivity(intent);
+        finish();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
+
 }

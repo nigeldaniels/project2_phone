@@ -5,7 +5,7 @@ package com.netchosis.somthing.project2_phone2;
  */
 public class Urls {
 
-    private static String domain = "http://104.236.143.204";
+    private static String domain = "http://10.0.255.3";
 
     public static String SET_STATUS_URL =  domain + "/set_status/";
     public final static String WHOAMI_URL =  domain + "/whoami/";

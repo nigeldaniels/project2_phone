@@ -38,6 +38,7 @@ public class outboundcall extends Activity {
         setContentView(R.layout.outboundcall_activity);
     //    calle = (TextView) findViewById(R.id.called_user);
      //   calle.setText(UserProfile.getClickeduser().getFirstname() +" "+ UserProfile.getClickeduser().getLastname());
+        setTitle(UserProfile.getClickeduser().getFirstname());
         try {
             startcall();
         } catch (SipException e) {

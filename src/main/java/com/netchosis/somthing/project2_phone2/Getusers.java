@@ -62,6 +62,7 @@ public class Getusers extends ListActivity {
         this.message = intent.getStringExtra(Authinticate.EXTRA_TOKEN); // message will be null if activity is started by a new signup
         Toast.makeText(getApplicationContext(), this.message, Toast.LENGTH_SHORT).show();
         String Message2 = intent.getStringExtra(Signup.EXTRA_TOKEN); //Message 2 will be null unless this activity is started by a new signup
+        setTitle(currentuser.getFirstname());
 
         if ( this.message == null){
             this.message = Message2;

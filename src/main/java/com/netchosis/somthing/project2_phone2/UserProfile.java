@@ -35,7 +35,7 @@ public class UserProfile extends Activity {
 		Bundle cu = intent.getExtras();
         clickeduser = cu.getParcelable(Getusers.EXTRA_USER);
 	    setClickeduser(clickeduser); // WTF WAS I DOING
-
+        setTitle(clickeduser.getFirstname());
 		setContentView(R.layout.activity_user_profile);
 		name = (TextView) findViewById(R.id.name);
 		age  = (TextView) findViewById(R.id.Age);

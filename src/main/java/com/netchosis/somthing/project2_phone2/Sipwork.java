@@ -106,12 +106,11 @@ public class Sipwork extends Service implements Runnable {
         SipProfile.Builder builder = new SipProfile.Builder(SIP_USER, SIP_DOMAIN);
         builder.setPassword(SIP_PASSWORD);
         builder.setAuthUserName(sipcreds.getString("username"));
-        builder.setAutoRegistration(true);
         builder.setOutboundProxy(SIP_DOMAIN);
         builder.setProtocol("UDP");
 
         SipProfile mSipProfile = builder.build();
-        sipint();
+
 
         if (mSipProfile == null) {
             Log.d("problem", "that seems to be the problem");
@@ -119,9 +118,6 @@ public class Sipwork extends Service implements Runnable {
         return mSipProfile;
     }
 
-    public void sipint(){
-
-    }
 
     //Creates a sip managger from
     public void sipint(SipProfile sipprofile) throws SipException{
@@ -130,7 +126,7 @@ public class Sipwork extends Service implements Runnable {
         intent.setAction("com.netchosis.somthing.project2_phone2.INCOMING_CALL");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, intent, Intent.FILL_IN_DATA);
         sipman.open(sipprofile, pendingIntent, null);
-        sipman.register(sipprofile,10,null);
+        sipman.register(sipprofile,600,null);
 
         if (sipman == null){
             Log.d("problem", "found the null");
@@ -171,16 +167,16 @@ public class Sipwork extends Service implements Runnable {
     public void run(){
         try {
             Looper.prepare();
-            Log.d("THREAD","thread started");
             setup_incoming();
+            setlisten();
+            Log.d("THREAD","thread started");
             sipcreds = Getsipcreds(Urls.SIP_CREDS_URL);
             Log.d("sipcreds",sipcreds.toString());
             //storecreds(sipcreds);
             sipprofile = buildsip(sipcreds);
-
             sipint(sipprofile);
-            setlisten();
-            setup_incoming();
+
+
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

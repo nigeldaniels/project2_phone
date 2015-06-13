@@ -88,7 +88,7 @@ public class Sipwork extends Service implements Runnable {
 
     public void setup_incoming(){
         IntentFilter filter = new IntentFilter();
-        filter.addAction("example.project2.INCOMING_CALL");
+        filter.addAction("com.netchosis.somthing.project2_phone2.INCOMING_CALL");
         callReceiver = new IncomingCallReceiver();
         registerReceiver(callReceiver, filter);
     }

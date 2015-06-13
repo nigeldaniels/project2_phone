@@ -22,14 +22,6 @@ public class UserProfile extends Activity {
 	private ImageView pic;
     private user clickeduser;
 
-    /*public static user getClickeduser() {
-        return clickeduser;
-    }
-
-    public void setClickeduser(user clickeduser){
-        this.clickeduser = clickeduser;
-    }
-    */
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {

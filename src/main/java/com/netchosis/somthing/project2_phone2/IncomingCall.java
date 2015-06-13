@@ -22,9 +22,7 @@ public class IncomingCall extends Activity {
 		setContentView(R.layout.activity_incoming_call1);
 		Intent intent = getIntent();
 		calle = intent.getStringExtra(IncomingCallReceiver.EXTRA_INFO);
-		caller = (TextView) findViewById(R.id.caller);
-        caller.setText(calle);
-        ring(player);
+		ring(player);
 	}
 
     public void ring(AsyncPlayer player){

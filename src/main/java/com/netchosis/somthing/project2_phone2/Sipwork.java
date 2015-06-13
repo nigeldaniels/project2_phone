@@ -117,7 +117,6 @@ public class Sipwork extends Service implements Runnable {
         intent.setAction("com.netchosis.somthing.project2_phone2.INCOMING_CALL");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, intent, Intent.FILL_IN_DATA);
         sipman.open(sipprofile, pendingIntent, null);
-        //sipman.register(sipprofile,10,null);
 
         if (sipman == null){
             Log.d("problem", "found the null");

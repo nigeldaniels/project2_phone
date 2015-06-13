@@ -28,7 +28,8 @@ public class IncomingCall extends Activity {
 	}
 
     public void ring(AsyncPlayer player){
-        player.play(this.getBaseContext(), android.provider.Settings.System.DEFAULT_RINGTONE_URI, true, 2);
+
+        player.play(getApplicationContext(), android.provider.Settings.System.DEFAULT_RINGTONE_URI, true, 2);
     }
 
     public void stopring(AsyncPlayer player){
@@ -49,6 +50,7 @@ public class IncomingCall extends Activity {
         stopring(player);
         try{
             IncomingCallReceiver.incomingCall.endCall();
+
         } catch (SipException e) {
             e.printStackTrace();
         }

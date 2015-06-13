@@ -77,14 +77,6 @@ public class Sipwork extends Service implements Runnable {
         }
         return json;
     }
-    // Takes sip creds as a json object and commits them to shared preferances
-    private void storecreds(JSONObject sipcreds) throws JSONException{
-        SharedPreferences settings = context.getSharedPreferences("sipshit", 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("username", sipcreds.getString("username"));
-        editor.putString("password", sipcreds.getString("password"));
-        editor.commit();
-    }
 
     public void setup_incoming(){
         IntentFilter filter = new IntentFilter();
@@ -93,8 +85,7 @@ public class Sipwork extends Service implements Runnable {
         registerReceiver(callReceiver, filter);
     }
 
-    // Takes sip creds and  returns a sip profile object
-    private SipProfile buildsip(JSONObject sipcreds ) throws JSONException, ParseException{
+    private SipProfile buildsip(JSONObject sipcreds) throws JSONException, ParseException{
 
         SIP_USER = sipcreds.getString("username");
         SIP_PASSWORD = sipcreds.getString("password");
@@ -107,20 +98,16 @@ public class Sipwork extends Service implements Runnable {
         builder.setPassword(SIP_PASSWORD);
         builder.setAuthUserName(sipcreds.getString("username"));
         builder.setAutoRegistration(true);
+        builder.setSendKeepAlive(true);
         builder.setOutboundProxy(SIP_DOMAIN);
         builder.setProtocol("UDP");
 
         SipProfile mSipProfile = builder.build();
-        sipint();
 
         if (mSipProfile == null) {
             Log.d("problem", "that seems to be the problem");
         }
         return mSipProfile;
-    }
-
-    public void sipint(){
-
     }
 
     //Creates a sip managger from
@@ -130,7 +117,7 @@ public class Sipwork extends Service implements Runnable {
         intent.setAction("com.netchosis.somthing.project2_phone2.INCOMING_CALL");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, intent, Intent.FILL_IN_DATA);
         sipman.open(sipprofile, pendingIntent, null);
-        sipman.register(sipprofile,10,null);
+        //sipman.register(sipprofile,10,null);
 
         if (sipman == null){
             Log.d("problem", "found the null");
@@ -172,13 +159,10 @@ public class Sipwork extends Service implements Runnable {
         try {
             Looper.prepare();
             Log.d("THREAD","thread started");
-            setup_incoming();
             sipcreds = Getsipcreds(Urls.SIP_CREDS_URL);
             Log.d("sipcreds",sipcreds.toString());
-            //storecreds(sipcreds);
             sipprofile = buildsip(sipcreds);
-
-            sipint(sipprofile);
+            sipint(sipprofile); // this is what actually causes us to register with the sip server
             setlisten();
             setup_incoming();
         } catch (IOException e) {

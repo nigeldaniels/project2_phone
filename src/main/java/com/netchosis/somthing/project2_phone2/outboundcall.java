@@ -1,6 +1,7 @@
 package com.netchosis.somthing.project2_phone2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.sip.SipAudioCall;
 import android.net.sip.SipException;
 import android.net.sip.SipSession;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 public class outboundcall extends Activity {
     public SipAudioCall mycall;
     public TextView calle;
+    protected user currentUser;
 
     SipAudioCall.Listener listener = new SipAudioCall.Listener() {
         @Override
@@ -36,9 +38,13 @@ public class outboundcall extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.outboundcall_activity);
-    //    calle = (TextView) findViewById(R.id.called_user);
-     //   calle.setText(UserProfile.getClickeduser().getFirstname() +" "+ UserProfile.getClickeduser().getLastname());
-        setTitle(UserProfile.getClickeduser().getFirstname());
+        calle = (TextView) findViewById(R.id.callee);
+        Intent intent = getIntent();
+        Bundle cu = intent.getExtras();
+        this.currentUser = cu.getParcelable(UserProfile.EXTRA_USER);
+        calle.setText(this.currentUser.getFirstname() +" "+ this.currentUser.getLastname());
+        setTitle(currentUser.getFirstname());
+
         try {
             startcall();
         } catch (SipException e) {
@@ -50,7 +56,7 @@ public class outboundcall extends Activity {
     public void startcall() throws SipException{
        try{
             String Uri = Sipwork.sipprofile.getUriString();
-            String to_uri = UserProfile.getClickeduser().sipuri;
+            String to_uri = this.currentUser.sipuri;
             mycall = Sipwork.sipman.makeAudioCall(Uri, to_uri, listener, 30);
         } catch (NullPointerException e) {
             Log.d("ERR",e.toString());
@@ -99,4 +105,4 @@ public class outboundcall extends Activity {
         }
     }
 
-}
+ }

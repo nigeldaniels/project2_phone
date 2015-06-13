@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class UserProfile extends Activity {
+
+    public final static String EXTRA_USER = "shit";
 	private TextView name;
 	private TextView age;
 	private TextView gender;
@@ -18,24 +20,28 @@ public class UserProfile extends Activity {
 	private TextView profession;
 	private TextView status;
 	private ImageView pic;
-    private static user clickeduser;
+    private user clickeduser;
 
-    public static user getClickeduser() {
+    /*public static user getClickeduser() {
         return clickeduser;
     }
 
     public void setClickeduser(user clickeduser){
         this.clickeduser = clickeduser;
     }
+    */
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
 		Bundle cu = intent.getExtras();
+
         clickeduser = cu.getParcelable(Getusers.EXTRA_USER);
-	    setClickeduser(clickeduser); // WTF WAS I DOING
+	    //setClickeduser(clickeduser); // WTF WAS I DOING
+
         setTitle(clickeduser.getFirstname());
+
 		setContentView(R.layout.activity_user_profile);
 		name = (TextView) findViewById(R.id.name);
 		age  = (TextView) findViewById(R.id.Age);
@@ -44,7 +50,7 @@ public class UserProfile extends Activity {
 		bio = (TextView) findViewById(R.id.bio);
 		location = (TextView) findViewById(R.id.Location);
 		status = (TextView) findViewById(R.id.Status);
-		pic = (ImageView) findViewById(R.id.imageView1);
+		pic = (ImageView) findViewById(R.id.callee);
 		name.setText(clickeduser.getFirstname() + " " + clickeduser.getLastname());
 		age.setText(clickeduser.getAge());
 		profession.setText(clickeduser.getProfession());
@@ -58,7 +64,7 @@ public class UserProfile extends Activity {
     public void calling(){ //TODO make a calling activity
         Intent callingintent = new Intent(this, outboundcall.class);
         callingintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        // callingintent.putExtra(EXTRA_USER, clickedUser);
+        callingintent.putExtra(EXTRA_USER, this.clickeduser);
         startActivity(callingintent);
     }
 	

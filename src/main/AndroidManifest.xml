@@ -51,7 +51,7 @@
         <activity
             android:name=".IncomingCall"
             android:label="@string/title_activity_incoming_call"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance" >
         </activity>
         <activity android:name=".Signup" >
         </activity>
@@ -67,6 +67,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.netchosis.somthing.project2_phone2.IncomingCall" />
+        </activity>
+        <activity
+            android:name=".MainActivity2Activity"
+            android:label="@string/title_activity_main_activity2"
+            android:parentActivityName=".outboundcall" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.netchosis.somthing.project2_phone2.outboundcall" />
         </activity>
     </application>
 

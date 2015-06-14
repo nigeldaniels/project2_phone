@@ -19,5 +19,6 @@
         <item>Female</item>
     </string-array>
     <string name="title_activity_answer">Answer</string>
+    <string name="title_activity_main_activity2">Review</string>
 
 </resources>

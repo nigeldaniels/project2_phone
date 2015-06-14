@@ -61,13 +61,14 @@ public class IncomingCall extends Activity {
 
    public void Hangup(View view) throws SipException {
        stopring(player);
-       if (IncomingCallReceiver.incomingCall.isInCall()){
-            IncomingCallReceiver.incomingCall.endCall();
-       }
 
-       else{
+
+            IncomingCallReceiver.incomingCall.endCall();
+            IncomingCallReceiver.incomingCall.close();
+
+
            Log.d("Hangup", "hangup button was used");
-       }
+
        this.finish();
    }
 

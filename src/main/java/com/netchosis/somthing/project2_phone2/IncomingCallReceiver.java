@@ -16,13 +16,17 @@ public class IncomingCallReceiver extends BroadcastReceiver {
     public String displayname;
     public static SipAudioCall incomingCall = null;
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, final Intent intent) {
 
         try{
             SipAudioCall.Listener listener = new  SipAudioCall.Listener(){
                 @Override
                 public void onRinging(SipAudioCall call, SipProfile caller) {
                     try{
+                        intent.setClass(context, IncomingCall.class);
+                        intent.putExtra(EXTRA_INFO, displayname);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
                         Log.d("ring","ading ding ding dong");
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -33,6 +37,7 @@ public class IncomingCallReceiver extends BroadcastReceiver {
             };
 
             incomingCall = Sipwork.sipman.takeAudioCall(intent,listener);
+            incomingCall.setListener(listener, true);
 
 
         }
@@ -41,10 +46,8 @@ public class IncomingCallReceiver extends BroadcastReceiver {
             e.printStackTrace();
         }
 
-        intent.setClass(context, IncomingCall.class);
-        intent.putExtra(EXTRA_INFO, displayname);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+
+
     }
 
 }

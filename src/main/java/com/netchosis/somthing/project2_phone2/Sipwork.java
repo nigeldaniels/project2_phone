@@ -158,7 +158,6 @@ public class Sipwork extends Service implements Runnable {
     public void run(){
         try {
             Looper.prepare();
-            setup_incoming();
             Log.d("THREAD","thread started");
             sipcreds = Getsipcreds(Urls.SIP_CREDS_URL);
             Log.d("sipcreds",sipcreds.toString());

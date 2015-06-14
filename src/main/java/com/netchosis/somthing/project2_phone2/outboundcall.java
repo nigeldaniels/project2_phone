@@ -22,11 +22,17 @@ public class outboundcall extends Activity {
     SipAudioCall.Listener listener = new SipAudioCall.Listener() {
         @Override
         public void onCallEstablished(SipAudioCall call){
+            Log.d("Callestablished", "call started");
             call.startAudio();
+
         }
         @Override
         public void onCallEnded(SipAudioCall call){
-            //idk
+            try {
+                call.endCall();
+            } catch (SipException e) {
+                e.printStackTrace();
+            }
         }
     };
 

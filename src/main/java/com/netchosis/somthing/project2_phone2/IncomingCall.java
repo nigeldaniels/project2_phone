@@ -33,11 +33,14 @@ public class IncomingCall extends Activity {
     public void stopring(AsyncPlayer player){
         player.stop();
     }
-	public void Answerbutton(View view){
+
+    public void Answerbutton(View view){
         stopring(player);
         try{
-            IncomingCallReceiver.incomingCall.answerCall(0);
+
+            IncomingCallReceiver.incomingCall.answerCall(10);
             IncomingCallReceiver.incomingCall.startAudio();
+
         } catch (SipException e) {
             e.printStackTrace();
         }

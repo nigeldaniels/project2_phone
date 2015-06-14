@@ -30,7 +30,6 @@ public class UserProfile extends Activity {
 		Bundle cu = intent.getExtras();
 
         clickeduser = cu.getParcelable(Getusers.EXTRA_USER);
-	    //setClickeduser(clickeduser); // WTF WAS I DOING
 
         setTitle(clickeduser.getFirstname());
 

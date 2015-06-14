@@ -42,7 +42,6 @@ public class Sipwork extends Service implements Runnable {
     public Context context = getBaseContext();
     private JSONObject sipcreds;
     private JSONObject json;
-    private JSONObject jsonObject;
     public static SipManager sipman = null;
 
     public SipManager getSipman() {
@@ -106,17 +105,17 @@ public class Sipwork extends Service implements Runnable {
         SipProfile mSipProfile = builder.build();
 
         if (mSipProfile == null) {
-            Log.d("problem", "that seems to be the problem");
+            Log.d("problem", "sipprofile is null");
         }
         return mSipProfile;
     }
 
-    //Creates a sip managger from
+
     public void sipint(SipProfile sipprofile) throws SipException{
 
         Intent intent = new Intent();
         intent.setAction("com.netchosis.somthing.project2_phone2.INCOMING_CALL");
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, intent, Intent.FILL_IN_DATA);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, Intent.FILL_IN_DATA);
         sipman.open(sipprofile, pendingIntent, null);
 
 

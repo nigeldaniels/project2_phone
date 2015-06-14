@@ -34,11 +34,13 @@ public class IncomingCallReceiver extends BroadcastReceiver {
 
             incomingCall = Sipwork.sipman.takeAudioCall(intent,listener);
 
+
         }
 
         catch (Exception e){
             e.printStackTrace();
         }
+
         intent.setClass(context, IncomingCall.class);
         intent.putExtra(EXTRA_INFO, displayname);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

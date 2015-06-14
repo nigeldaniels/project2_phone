@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class outboundcall extends Activity {
+    public final static String EXTRA_USER = "outboundcall_extras";
     public SipAudioCall mycall;
     public TextView calle;
     protected user currentUser;
@@ -82,6 +83,9 @@ public class outboundcall extends Activity {
 
     public void endcall(View view) throws SipException { //button
        mycall.endCall();
+       Intent reviewintent = new Intent(this,ReviewActivity.class);
+       reviewintent.putExtra(EXTRA_USER,this.currentUser);
+       startActivity(reviewintent);
        this.finish();
     }
 

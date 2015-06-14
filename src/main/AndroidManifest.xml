@@ -69,7 +69,7 @@
                 android:value="com.netchosis.somthing.project2_phone2.IncomingCall" />
         </activity>
         <activity
-            android:name=".MainActivity2Activity"
+            android:name=".ReviewActivity"
             android:label="@string/title_activity_main_activity2"
             android:parentActivityName=".outboundcall" >
             <meta-data

@@ -1,19 +1,32 @@
 package com.netchosis.somthing.project2_phone2;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity2Activity extends ActionBarActivity {
+public class ReviewActivity extends ActionBarActivity {
+    protected user review_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.Review);
+        Intent intent = getIntent();
+        Bundle cu = intent.getExtras();
+        this.review_user = cu.getParcelable(outboundcall.EXTRA_USER);
+
+
     }
 
+    private String fullname(user user){
+        String Firstname = user.getFirstname();
+        String Lastname = user.getLastname();
+        String Fullname = Firstname + " " + Lastname;
+        return Fullname;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

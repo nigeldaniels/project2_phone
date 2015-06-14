@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
  * Created by nigel on 5/27/15.
  */
 public class Valuestore {
-    private static final String PREF_NAME ="perfs" ;
+    private static final String PREF_NAME ="perfs";
 
     private static SharedPreferences getPerfs(Context context) {
         return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
@@ -22,5 +22,7 @@ public class Valuestore {
         editor.putString("token",input);
         editor.apply();
     }
+
+
 
 }

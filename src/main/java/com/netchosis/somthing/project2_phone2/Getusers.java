@@ -149,6 +149,7 @@ public class Getusers extends ListActivity {
             case Sipwork.SIP_STATE_REGFAILED:
                 Message FailedMessage = mHandler.obtainMessage(state,sipWork);
                 FailedMessage.sendToTarget();
+
                 break;
 
         }

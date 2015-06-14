@@ -97,6 +97,7 @@ public class Sipwork extends Service implements Runnable {
         SipProfile.Builder builder = new SipProfile.Builder(SIP_USER, SIP_DOMAIN);
         builder.setPassword(SIP_PASSWORD);
         builder.setAuthUserName(sipcreds.getString("username"));
+
         builder.setAutoRegistration(true);
         builder.setSendKeepAlive(true);
         builder.setOutboundProxy(SIP_DOMAIN);
@@ -117,6 +118,7 @@ public class Sipwork extends Service implements Runnable {
         intent.setAction("com.netchosis.somthing.project2_phone2.INCOMING_CALL");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 0, intent, Intent.FILL_IN_DATA);
         sipman.open(sipprofile, pendingIntent, null);
+
 
         if (sipman == null){
             Log.d("problem", "found the null");
@@ -157,6 +159,7 @@ public class Sipwork extends Service implements Runnable {
     public void run(){
         try {
             Looper.prepare();
+            setup_incoming();
             Log.d("THREAD","thread started");
             sipcreds = Getsipcreds(Urls.SIP_CREDS_URL);
             Log.d("sipcreds",sipcreds.toString());
@@ -164,6 +167,7 @@ public class Sipwork extends Service implements Runnable {
             sipint(sipprofile); // this is what actually causes us to register with the sip server
             setlisten();
             setup_incoming();
+
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

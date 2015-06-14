@@ -22,23 +22,25 @@ public class IncomingCall extends Activity {
 		setContentView(R.layout.activity_incoming_call1);
 		Intent intent = getIntent();
 		calle = intent.getStringExtra(IncomingCallReceiver.EXTRA_INFO);
-		caller = (TextView) findViewById(R.id.caller);
-        caller.setText(calle);
-        ring(player);
+		ring(player);
 	}
 
     public void ring(AsyncPlayer player){
-        player.play(this.getBaseContext(), android.provider.Settings.System.DEFAULT_RINGTONE_URI, true, 2);
+
+        player.play(getApplicationContext(), android.provider.Settings.System.DEFAULT_RINGTONE_URI, true, 2);
     }
 
     public void stopring(AsyncPlayer player){
         player.stop();
     }
-	public void Answerbutton(View view){
+
+    public void Answerbutton(View view){
         stopring(player);
         try{
-            IncomingCallReceiver.incomingCall.answerCall(0);
+
+            IncomingCallReceiver.incomingCall.answerCall(10);
             IncomingCallReceiver.incomingCall.startAudio();
+
         } catch (SipException e) {
             e.printStackTrace();
         }
@@ -49,6 +51,7 @@ public class IncomingCall extends Activity {
         stopring(player);
         try{
             IncomingCallReceiver.incomingCall.endCall();
+
         } catch (SipException e) {
             e.printStackTrace();
         }
@@ -57,14 +60,15 @@ public class IncomingCall extends Activity {
 
 
    public void Hangup(View view) throws SipException {
-       if (IncomingCallReceiver.incomingCall.isInCall()){
+       stopring(player);
+
+
             IncomingCallReceiver.incomingCall.endCall();
-       }
+            IncomingCallReceiver.incomingCall.close();
 
 
-       else{
-           Log.d("yeah ", "yeah");
-       }
+           Log.d("Hangup", "hangup button was used");
+
        this.finish();
    }
 

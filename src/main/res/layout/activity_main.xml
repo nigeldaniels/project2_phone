@@ -27,7 +27,7 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:singleLine="true"
-        android:text="dude@dude.com">
+        android:text="fuck@this.com">
     </EditText>
 
     <EditText

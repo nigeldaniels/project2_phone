@@ -5,19 +5,26 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class ReviewActivity extends ActionBarActivity {
     protected user review_user;
+    private String fullname;
+    private TextView display_text;
+    private String SALUTATION_TEXT = "Let us know how your conversation went";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.Review);
+        setContentView(R.layout.review);
         Intent intent = getIntent();
         Bundle cu = intent.getExtras();
-        this.review_user = cu.getParcelable(outboundcall.EXTRA_USER);
 
+        this.review_user = cu.getParcelable(outboundcall.EXTRA_USER);
+        this.fullname = fullname(this.review_user);
+        this.display_text = (TextView) findViewById(R.id.salutation);
+        this.display_text.setText(SALUTATION_TEXT + this.fullname);
 
     }
 

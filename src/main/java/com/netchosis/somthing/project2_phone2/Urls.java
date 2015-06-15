@@ -9,6 +9,7 @@ public class Urls {
 
     public static String SET_STATUS_URL =  domain + "/set_status/";
     public final static String WHOAMI_URL =  domain + "/whoami/";
+    public final static String REVIEW_URL = domain + "/review";
     public final static String USERS_URL =  domain +"/users/";
     public final static String API_TOKEN_URL = domain + "/api-token/";
     public final static String UPDATE_USER_URL = domain +"/update_user/";

@@ -82,7 +82,7 @@ public class outboundcall extends Activity {
     }
 
     public void endcall(View view) throws SipException { //button
-//       mycall.endCall(); /// remember to turn this back on
+       mycall.endCall(); /// remember to turn this back on
        Intent reviewintent = new Intent(this,ReviewActivity.class);
        reviewintent.putExtra(EXTRA_USER,this.currentUser);
        startActivity(reviewintent);

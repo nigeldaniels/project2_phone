@@ -73,20 +73,22 @@ public class ReviewActivity extends ActionBarActivity {
 
     private float checkrating(RatingBar ratingBar) {
         if (ratingBar.getNumStars() < 3){
-            this.rateing = ratingBar.getNumStars();
+            this.rateing = (int) ratingBar.getRating();
             return 0;
         }
         else {
-            this.rateing = ratingBar.getNumStars();
+            this.rateing = (int) ratingBar.getRating();
             return ratingBar.getRating();
         }
     }
 
     private boolean send_review(){
+        get_comments();
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(10);
-        nameValuePairs.add(new BasicNameValuePair("id",this.review_user.getId()));
-        nameValuePairs.add(new BasicNameValuePair("rateing",String.valueOf(this.rateing)));
-        nameValuePairs.add(new BasicNameValuePair("comments",this.comments));
+        nameValuePairs.add(new BasicNameValuePair("reviewer",Valuestore.get_current_user(getApplicationContext())));
+        nameValuePairs.add(new BasicNameValuePair("reviewduser",this.review_user.getId()));
+        nameValuePairs.add(new BasicNameValuePair("stars",String.valueOf(this.rateing)));
+        nameValuePairs.add(new BasicNameValuePair("content",this.comments));
 
         Httpio reviewsender = new Httpio(httphandler);
         reviewsender.setPost();

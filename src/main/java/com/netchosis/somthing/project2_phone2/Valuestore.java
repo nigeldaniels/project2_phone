@@ -23,6 +23,16 @@ public class Valuestore {
         editor.apply();
     }
 
+   public static void set_current_user(Context context, String input) {
+       SharedPreferences.Editor editor = getPerfs(context).edit();
+       editor.putString("current_user",input);
+       editor.apply();
+
+   }
+
+   public static String get_current_user(Context context){
+       return Valuestore.getPerfs(context).getString("current_user","NOT GOOD");
+   }
 
 
 }

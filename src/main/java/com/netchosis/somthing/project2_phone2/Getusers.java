@@ -103,6 +103,7 @@ public class Getusers extends ListActivity {
                 JSONObject json = new JSONObject(Data);
                 String user = json.get("item1").toString();
                 Log.d("You are", user);
+                Valuestore.set_current_user(getApplicationContext(),user);
                 setIdent(user);
                 buildmenu();
                 Getimages images = new Getimages(dataarray);
